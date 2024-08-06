@@ -13,3 +13,13 @@
   box-sizing: border-box;
   font-family: 'Poppin', sans-serif;
 }
+
+body {
+  background: #002a43;
+  color: #fff;
+  display: flex;
+  position: absolute;
+  left: 5%;
+  top: 7%;
+  max-height: 100%;
+}
