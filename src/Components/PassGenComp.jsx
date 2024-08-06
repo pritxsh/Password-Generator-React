@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import "../Components/PassGenStyle.css"
+import Checkbox from '@mui/material/Checkbox';
 import CopyImage from "../assets/copy.png"
+import { green } from '@mui/material/colors';
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
+import { Button } from '@mui/material';
+
+
+
 const PassGenComp = () => {
 
     const[initialval, setinitialval] = useState(10)
@@ -9,6 +17,7 @@ const PassGenComp = () => {
     const[lowercaseoption,setlowercaseoption] = useState(true)
     const[numberoption,setnumberoption] = useState(true)
     const[specialcaseoption,setspecialcaseoption] = useState(true)
+    const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
  
     
     const handleChange = (e)=>{
@@ -129,9 +138,19 @@ const PassGenComp = () => {
     <div className="maindiv">
         <h2>Generate a</h2>
           <h1>Random Password</h1>
-
           <div className='lengthgiver'>
-          <input type="range" id='slider' min={10} max={24} value={initialval} onChange={handleChange} /> 
+          <Box sx={{ width: 200
+           }}>
+      <Slider id="slider"
+        defaultValue={20}
+        sx={{ 
+          color: green[600],
+          width :200,
+          height : 7
+        }}
+      min={10} max={24} value={initialval} onChange={handleChange}
+      />
+    </Box>
           <input type="number" min={10} max={24} id="number" value={initialval} onChange={handleChange} />
       
           </div>
@@ -139,32 +158,79 @@ const PassGenComp = () => {
 
           <div className="content">
           <input type="text" id='inputext' readOnly value={password} />
-          <button id="copy-text" onClick={copyPassword}>
-          <img src={CopyImage} alt="copy_image" />
-        </button>
+          <button id="copy-text"onClick={copyPassword}>
+            <img src={CopyImage} alt="" />
+          </button>
+       
         </div>
-        <button id='generate' onClick={handlePasswordGeneration}>Generate Password</button>
+        <Button id='generate' onClick={handlePasswordGeneration}>Generate Password</Button>
+        
        
       <div className="optionclass">
 <label className="checbox_label">
   <span>UpperCase</span>
-  <input type="checkbox" defaultChecked={true} onClick={()=>setuppercaseoption(!uppercaseoption)}/>
+  <Checkbox
+        {...label}
+        defaultChecked
+        onClick={()=>setuppercaseoption(!uppercaseoption)}
+        sx={{ 
+          color: green[600],
+          '& .MuiSvgIcon-root': { fontSize: 28 },
+        '&.Mui-checked': {
+            color: green[600],
+          },
+        }}
+      />
 </label>
 
 <label className="checbox_label" >
   <span>LowerCase</span>
-  <input type="checkbox" defaultChecked={true} onClick={()=>setlowercaseoption(!lowercaseoption)}/>
+  <Checkbox
+        {...label}
+        defaultChecked
+        onClick={()=>setlowercaseoption(!lowercaseoption)}
+        sx={{ 
+          color: green[600],
+          '& .MuiSvgIcon-root': { fontSize: 28 },
+        '&.Mui-checked': {
+            color: green[600],
+          },
+        }}
+      />
 </label>
 
 <label className="checbox_label" >
   <span>Numbers</span>
-  <input type="checkbox" defaultChecked={true} onClick={()=>setnumberoption(!numberoption)}/>
+  <Checkbox
+        {...label}
+        defaultChecked
+        onClick={()=>setnumberoption(!numberoption)}
+        sx={{ 
+          color: green[600],
+          '& .MuiSvgIcon-root': { fontSize: 28 },
+        '&.Mui-checked': {
+            color: green[600],
+          },
+        }}
+      />
 </label>
 
 <label className="checbox_label" >
   <span>Special Character</span>
-  <input type="checkbox" defaultChecked={true} onClick={()=>setspecialcaseoption(!specialcaseoption)}/>
+  <Checkbox
+        {...label}
+        defaultChecked
+        onClick={()=>setspecialcaseoption(!specialcaseoption)}
+        sx={{ 
+          color: green[600],
+          '& .MuiSvgIcon-root': { fontSize: 28 },
+        '&.Mui-checked': {
+            color: green[600],
+          },
+        }}
+      />
 </label>
+
         </div>
     </div>
   )
