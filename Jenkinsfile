@@ -5,6 +5,7 @@ pipeline {
     IMAGE = "pritxsh/password-generator-react"
   }
 
+
   stages {
 
     stage('Checkout') {
