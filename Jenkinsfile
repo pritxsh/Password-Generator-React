@@ -8,11 +8,6 @@ pipeline {
 
   stages {
 
-    stage('Checkout') {
-      steps {
-        git 'https://github.com/pritxsh/Password-Generator-React.git'
-      }
-    }
 
     stage('Install') {
       steps { sh 'npm ci' }
