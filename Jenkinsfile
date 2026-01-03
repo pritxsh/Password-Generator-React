@@ -8,15 +8,19 @@ pipeline {
 
   stages {
 
-
     stage('Install') {
       steps { sh 'npm ci' }
     }
 
-    stage('SonarCloud') {
+     stage('SonarCloud Analysis') {
       steps {
         withSonarQubeEnv('sonarcloud') {
-          sh 'sonar-scanner'
+          sh '''
+          sonar-scanner \
+            -Dsonar.projectKey=pritxsh_Password-Generator-React \
+            -Dsonar.organization=pritxsh \
+            -Dsonar.sources=src
+          '''
         }
       }
     }
