@@ -2,44 +2,48 @@ pipeline {
   agent any
 
   environment {
-    IMAGE = "pritxbat/password-generator-react"
+    IMAGE = "pritxsh/password-generator-react"
   }
-
 
   stages {
 
-    stage('Install Dependencies') {
-      steps { bat 'npm ci' }
+    stage('Install') {
+      steps {
+        nodejs('node18') {
+          sh 'npm ci'
+        }
+      }
     }
 
-     stage('SonarCloud Analysis') {
+    stage('Analyze') {
       steps {
         withSonarQubeEnv('sonarcloud') {
-          bat '''
-          sonar-scanner \
-            -Dsonar.projectKey=pritxbat_Password-Generator-React \
-            -Dsonar.organization=pritxbat \
-            -Dsonar.sources=src
-          '''
+          sh 'sonar-scanner'
         }
       }
     }
 
     stage('Build') {
-      steps { bat 'npm run build' }
+      steps {
+        nodejs('node18') {
+          sh 'npm run build'
+        }
+      }
     }
 
-    stage('Docker Build') {
-      steps { bat "docker build -t $IMAGE:$BUILD_NUMBER ." }
+    stage('Package') {
+      steps {
+        sh "docker build -t $IMAGE:$BUILD_NUMBER ."
+      }
     }
 
-    stage('Docker Pubat') {
+    stage('Publish') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'U', passwordVariable: 'P')]) {
-          bat '''
+          sh """
           echo $P | docker login -u $U --password-stdin
-          docker pubat $IMAGE:$BUILD_NUMBER
-          '''
+          docker push $IMAGE:$BUILD_NUMBER
+          """
         }
       }
     }
