@@ -16,12 +16,12 @@ pipeline {
     }
 
     stage('Analyze') {
-      steps {
-        withSonarQubeEnv('sonarcloud') {
-          sh 'sonar-scanner'
-        }
-      }
+  steps {
+    withSonarQubeEnv('sonarcloud') {
+      sh "${tool 'sonar-scanner'}/bin/sonar-scanner"
     }
+  }
+}
 
     stage('Build') {
       steps {
