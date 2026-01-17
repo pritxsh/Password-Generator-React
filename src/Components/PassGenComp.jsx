@@ -16,6 +16,7 @@ const PassGenComp = () => {
   const [specialcaseoption, setspecialcaseoption] = useState(true); */
 
   //Instead managing indiviual state, managing them in object
+  
   const [options, setOptions] = useState({
     upparCase: true,
     lowerCase: true,
