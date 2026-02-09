@@ -1,20 +1,21 @@
-
-
-.maindiv{
+.maindiv {
     padding: 10px 30px;
     margin: 5px 0px 5px 0;
     width: 120%;
-    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.18);
-    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 
 }
+
+
+
 h2 {
     font-size: 55px;
-   
+
 }
 
 h1 {
@@ -22,39 +23,18 @@ h1 {
     border-bottom: 4px solid #04de78;
     margin: -10px 0px 0px 0px;
     font-size: 45px;
-     width: 59%;
+    width: 59%;
 
 }
 
-.lengthgiver{
+.lengthgiver {
     display: flex;
     margin: 30px 0 30px 0;
     align-items: center;
     justify-content: space-between;
-  }
-#number{
-    position: absolute;
-    left: 55%;
-    padding: 5px;
-    font-size: 20px;
-    font-weight: 500;
-    border-radius: 5px;
-    width: 55px;
-    border: none;
-    outline: none;
-}
-#length{
-  border-radius: 5px;
-  height: 20px;
-  width: 150px;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  accent-color:#04de78;
 }
 
-
-#number{
+#number {
     position: absolute;
     left: 55%;
     padding: 5px;
@@ -66,7 +46,30 @@ h1 {
     outline: none;
 }
 
-  
+#length {
+    border-radius: 5px;
+    height: 20px;
+    width: 150px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    accent-color: #04de78;
+}
+
+
+#number {
+    position: absolute;
+    left: 55%;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 5px;
+    width: 55px;
+    border: none;
+    outline: none;
+}
+
+
 .content {
     padding: 15px 40px;
     margin: 10px 0px 10px 0;
@@ -102,22 +105,24 @@ h1 {
     margin-right: -10px;
 }
 
-#generate{
-   padding: 10px;
-   font-size: 16px;
-   font-weight: bold;
-   margin: 10px 0 0 0;
-   background-color: #0fb769;
-   color: rgb(245, 245, 245); 
+#generate {
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0 0 0;
+    background-color: #0fb769;
+    color: rgb(245, 245, 245);
 }
 
-#generate:hover{
+#generate:hover {
     background-color: #079251;
 }
-.optionclass{
+
+.optionclass {
     display: flex;
 }
-.checbox_label{
+
+.checbox_label {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -125,5 +130,74 @@ h1 {
     font-size: 16px;
 }
 
+@media (max-width: 640px) {
+    .box {
+        display: flex;
+        justify-content: center;
+    }
 
- 
+    .maindiv {
+        padding: 25px 30px;
+        width: 70%;
+
+
+    }
+
+    .generator_heading_h2 {
+        font-size: 22px;
+
+    }
+
+    .generator_heading_h1 {
+        font-size: 18px;
+        padding: 3px 0px;
+    }
+
+    .lengthgiver {
+        /* flex-direction: column; */
+        /* align-items: flex-start; */
+        margin: 30px 0px;
+    }
+
+    .lengthgiver #slider {
+        height: 5px;
+    }
+
+    .lengthgiver #number {
+        width: 50px;
+        font-size: 15px;
+    }
+
+    .content {
+        padding: 5px 30px;
+        margin: 1px 0px 12px 0;
+        width: 80%;
+
+    }
+
+    .content #inputext {
+        font-size: 17px;
+    }
+
+    #generate {
+        padding: 8px;
+        font-size: 14px;
+        font-weight: bold;
+        margin: 15px 0 0 0;
+    }
+
+    .optionclass {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .checbox_label {
+        margin: 0px;
+        font-size: 13px;
+    }
+
+    .checkbox {
+        font-size: 20px;
+        font-weight: 100;
+    }
+}

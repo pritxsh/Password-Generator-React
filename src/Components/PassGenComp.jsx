@@ -16,7 +16,7 @@ const PassGenComp = () => {
   const [specialcaseoption, setspecialcaseoption] = useState(true); */
 
   //Instead managing indiviual state, managing them in object
-  
+
   const [options, setOptions] = useState({
     upparCase: true,
     lowerCase: true,
@@ -80,7 +80,7 @@ const PassGenComp = () => {
       copypassword = "";
       allChar = upperCase + lowerCase + specialChar;
       console.log(
-        "Uppercase, Lowercase, and Special Case options are checked."
+        "Uppercase, Lowercase, and Special Case options are checked.",
       );
     } else if (
       options.upparCase &&
@@ -240,113 +240,130 @@ const PassGenComp = () => {
   };
 
   return (
-    <div className="maindiv">
-      <h2>Generate a</h2>
-      <h1>Random Password</h1>
-      <div className="lengthgiver">
-        <Box sx={{ width: 200 }}>
-          <Slider
-            id="slider"
-            defaultValue={20}
-            sx={{
-              color: green[600],
-              width: 200,
-              height: 7,
-            }}
+    <div className="box">
+      <div className="maindiv">
+        <h2 className="generator_heading_h2">Generate a</h2>
+        <h1 className="generator_heading_h1">Random Password</h1>
+        <div className="lengthgiver">
+          <Box sx={{ width: 200 }}>
+            <Slider
+              id="slider"
+              defaultValue={20}
+              sx={{
+                color: green[600],
+                width: {
+                  xs: 140, // mobile
+                  sm: 170, // tablet
+                  md: 200, // desktop
+                },
+                height: 7,
+              }}
+              min={10}
+              max={24}
+              value={initialval}
+              onChange={handleChange}
+            />
+          </Box>
+          <input
+            type="number"
             min={10}
             max={24}
+            id="number"
             value={initialval}
             onChange={handleChange}
           />
-        </Box>
-        <input
-          type="number"
-          min={10}
-          max={24}
-          id="number"
-          value={initialval}
-          onChange={handleChange}
-        />
-      </div>
+        </div>
 
-      <div className="content">
-        <input type="text" id="inputext" readOnly value={password} />
-        <button id="copy-text" onClick={copyPassword}>
-          <img src={CopyImage} alt="" />
-        </button>
-      </div>
-      <Button id="generate" onClick={handlePasswordGeneration}>
-        Generate Password
-      </Button>
-
-      <div className="optionclass">
-        <label className="checbox_label">
-          <span>UpperCase</span>
-          <Checkbox
-            {...label}
-            checked={options.upparCase}
-            // onClick={() => setuppercaseoption(!uppercaseoption)}
-            onChange={() => handleOptions("upparCase")}
-            sx={{
-              color: green[600],
-              "& .MuiSvgIcon-root": { fontSize: 28 },
-              "&.Mui-checked": {
-                color: green[600],
-              },
-            }}
+        <div className="content">
+          <input
+            className="content_input"
+            type="text"
+            id="inputext"
+            readOnly
+            value={password}
           />
-        </label>
+          <button
+            className="content_button"
+            id="copy-text"
+            onClick={copyPassword}
+          >
+            <img src={CopyImage} alt="" />
+          </button>
+        </div>
+        <Button id="generate" onClick={handlePasswordGeneration}>
+          Generate Password
+        </Button>
 
-        <label className="checbox_label">
-          <span>LowerCase</span>
-          <Checkbox
-            {...label}
-            checked={options.lowerCase}
-            // onClick={() => setlowercaseoption(!lowercaseoption)}
-            onChange={() => handleOptions("lowerCase")}
-            sx={{
-              color: green[600],
-              "& .MuiSvgIcon-root": { fontSize: 28 },
-              "&.Mui-checked": {
+        <div className="optionclass">
+          <label className="checbox_label">
+            <span>UpperCase</span>
+            <Checkbox
+              {...label}
+              checked={options.upparCase}
+              // onClick={() => setuppercaseoption(!uppercaseoption)}
+              onChange={() => handleOptions("upparCase")}
+              sx={{
                 color: green[600],
-              },
-            }}
-          />
-        </label>
+                "& .MuiSvgIcon-root": { fontSize: 28 },
+                "&.Mui-checked": {
+                  color: green[600],
+                },
+              }}
+            />
+          </label>
 
-        <label className="checbox_label">
-          <span>Numbers</span>
-          <Checkbox
-            {...label}
-            checked={options.numbers}
-            // onClick={() => setnumberoption(!numberoption)}
-            onChange={() => handleOptions("numbers")}
-            sx={{
-              color: green[600],
-              "& .MuiSvgIcon-root": { fontSize: 28 },
-              "&.Mui-checked": {
+          <label className="checbox_label">
+            <span>LowerCase</span>
+            <Checkbox
+              {...label}
+              checked={options.lowerCase}
+              // onClick={() => setlowercaseoption(!lowercaseoption)}
+              onChange={() => handleOptions("lowerCase")}
+              sx={{
                 color: green[600],
-              },
-            }}
-          />
-        </label>
+                "& .MuiSvgIcon-root": { fontSize: 28 },
+                "&.Mui-checked": {
+                  color: green[600],
+                },
+              }}
+            />
+          </label>
 
-        <label className="checbox_label">
-          <span>Special Character</span>
-          <Checkbox
-            {...label}
-            checked={options.specialCharcter}
-            // onClick={() => setspecialcaseoption(!specialcaseoption)}
-            onChange={() => handleOptions("specialCharcter")}
-            sx={{
-              color: green[600],
-              "& .MuiSvgIcon-root": { fontSize: 28 },
-              "&.Mui-checked": {
+          <label className="checbox_label">
+            <span>Numbers</span>
+            <Checkbox
+              className="checkbox"
+              {...label}
+              checked={options.numbers}
+              // onClick={() => setnumberoption(!numberoption)}
+              onChange={() => handleOptions("numbers")}
+              sx={{
                 color: green[600],
-              },
-            }}
-          />
-        </label>
+                "& .MuiSvgIcon-root": { fontSize: 28 },
+                "&.Mui-checked": {
+                  color: green[600],
+                },
+              }}
+            />
+          </label>
+
+          <label className="checbox_label">
+            <span>Special Character</span>
+            <Checkbox
+              {...label}
+              checked={options.specialCharcter}
+              // onClick={() => setspecialcaseoption(!specialcaseoption)}
+              onChange={() => handleOptions("specialCharcter")}
+              sx={{
+                color: green[600],
+                "& .MuiSvgIcon-root": { fontSize: 28 },
+                "&.Mui-checked": {
+                  color: green[600],
+                },
+              }}
+            />
+          </label>
+        </div>
       </div>
     </div>
   );
